@@ -1,0 +1,107 @@
+.encabezado,.btn,.card-header,.cabeza{
+  background: linear-gradient(rgb(126, 50, 189),rgb(99, 97, 224)) ;
+}
+.navbar{
+  background-color: rgb(99, 97, 224);
+}
+.vista-pagina{
+    border-radius: 4vmax;
+    height: 100vh;
+}
+.frame{
+  height: 90%;
+}
+.botones{
+    position: fixed;
+    min-height: 120px;
+    width: 100%;
+    text-align: center;
+    word-wrap: break-word;
+    margin-top: 3vmax;
+    z-index: 2;
+}
+.bot{
+  z-index: 3;
+}
+.x{
+    position: fixed;
+    min-height: 120px;
+    width: 252px;
+    text-align: center;
+    word-wrap: break-word;
+    margin-top: 3vmax;
+    z-index: 2;
+}
+.x2{
+  position: fixed;
+    min-height: 120px;
+    width: 252px;
+    text-align: center;
+    word-wrap: break-word;
+    margin-top: 2vh;
+    margin-left: 2vh;
+    z-index: 1;
+}
+.body{
+  position:absolute; 
+}
+.f{
+  border-radius: 50%;
+  color: white;
+}
+.ediciones{
+  width: 70vmin;
+}
+.borde{
+  border-radius: 2vh;
+}
+h6{
+  font-size: 3vh;
+}
+.letra{
+  font-size: 1.5vmax;
+}
+.i{
+  font-size: 1.2vmax;
+  border-radius: 2vmax;
+  margin-bottom: 0.8vmax;
+}
+.letra{
+  font-size: 1.5vmax;
+}
+.borde1{
+  border-top-right-radius: 0.5vmax;
+  border-top-left-radius: 0.5vmax;
+}
+.nav-link,.nav-link:hover{
+  color: aliceblue;
+}
+.pagination > li.active > button.page-link {
+  background: linear-gradient(rgb(126, 50, 189),rgb(99, 97, 224)) ;
+}
+.list-group > button.list-group-item :active{
+  background: linear-gradient(rgb(126, 50, 189),rgb(99, 97, 224)) ;
+}
+.card-img-overlay{
+  background-color: rgba(0, 0, 0, 0.205);
+}
+.b{
+  border: red 5px none;
+  background-color:  rgba(0, 0, 0, 0);
+}
+body{
+  position: relative;
+}
+#parallelogram {
+  width: 150px;
+  height: 100px;
+  -webkit-transform: skew(20deg);
+     -moz-transform: skew(20deg);
+       -o-transform: skew(20deg);
+  background: red;
+}
+.b2{
+  border-color: rgba(255, 255, 255, 0);
+  background-color: rgba(255, 255, 255, 0);
+  color: dodgerblue;
+}
