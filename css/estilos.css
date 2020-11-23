@@ -1,8 +1,11 @@
 .encabezado,.btn,.card-header,.cabeza{
-  background: linear-gradient(rgb(126, 50, 189),rgb(99, 97, 224)) ;
+  /* background: linear-gradient(rgb(126, 50, 189),rgb(99, 97, 224)) ; */
+  background: linear-gradient(#2B7A78,#3AAFA9) ;
+  
 }
 .navbar{
-  background-color: rgb(99, 97, 224);
+  background: linear-gradient(#2B7A78,#3AAFA9) ;
+  /* background: linear-gradient(#17252A,rgb(117, 233, 179)) ; */
 }
 .vista-pagina{
     border-radius: 4vmax;
@@ -77,10 +80,10 @@ h6{
   color: aliceblue;
 }
 .pagination > li.active > button.page-link {
-  background: linear-gradient(rgb(126, 50, 189),rgb(99, 97, 224)) ;
+  background: linear-gradient(#2B7A78,#3AAFA9) ;
 }
 .list-group > button.list-group-item :active{
-  background: linear-gradient(rgb(126, 50, 189),rgb(99, 97, 224)) ;
+  background: linear-gradient(#2B7A78,#3AAFA9) ;
 }
 .card-img-overlay{
   background-color: rgba(0, 0, 0, 0.205);
@@ -91,6 +94,7 @@ h6{
 }
 body{
   position: relative;
+  background: #DEF2F1;
 }
 #parallelogram {
   width: 150px;

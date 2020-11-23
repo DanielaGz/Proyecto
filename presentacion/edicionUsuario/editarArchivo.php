@@ -71,9 +71,10 @@ if (isset($_GET["ed"])) {
             }
             break;
         case 'Eliminar': {
-                Editar("<!-- Seccion" . $_GET["sec"] . " -->", "../../" . $_GET["idPag"] . "/menu.php", "\t");
+                eliminarDir("../../paginas/4/1606095564");
+                /* Editar("<!-- Seccion" . $_GET["sec"] . " -->", "../../" . $_GET["idPag"] . "/menu.php", "\t");
                 Editar("<!-- Seccion" . $_GET["sec"] . " -->", "../../" . $_GET["idPag"] . "/inicio/inicio.php", "\t");
-                eliminar("../../" . $_GET["idPag"] . "/inicio/seccion" . $_GET["sec"] . ".php", $_GET["sec"], $total);
+                eliminar("../../" . $_GET["idPag"], $_GET["sec"], $total); */
             }
             break;
     }
@@ -134,13 +135,43 @@ function Editar2($parametro, $archivo, $valor)
 
 function eliminar($url, $sec, $tot)
 {
-    unlink($url);
+    unlink($url . "/inicio/seccion" . $sec . ".php");
     for ($i = $sec; $i < $tot; $i++) {
-        if (file_exists("../../pagina/inicio/seccion" . $i . ".php")) {
-            rename("../../pagina/inicio/seccion" . $i . ".php", "../../pagina/inicio/seccion" . ($i - 1) . ".php");
-            Editar("<!-- Seccion" . $i . " -->", "../../pagina/inicio/inicio.php", "\t<!-- Seccion" . ($i - 1) . " --><div id='Seccion" . ($i - 1) . "' class='selec'><?php include 'seccion" . ($i - 1) . ".php' ?></div>");
-            Editar2("Seccion" . $i . "", "../../pagina/menu.php", "Seccion" . ($i - 1));
+        if (file_exists($url . "/inicio/seccion" . $i . ".php")) {
+            rename($url . "/inicio/seccion" . $i . ".php", $url . "/inicio/seccion" . ($i - 1) . ".php");
+            Editar("<!-- Seccion" . $i . " -->", $url . "/inicio/inicio.php", "\t<!-- Seccion" . ($i - 1) . " --><div id='Seccion" . ($i - 1) . "' class='selec'><?php include 'seccion" . ($i - 1) . ".php' ?></div>");
+            Editar2("Seccion" . $i . "", $url . "/menu.php", "Seccion" . ($i - 1));
             sleep(0.5);
         }
     }
+}
+
+function eliminarDir(string $dir): int
+{
+
+    $count = 0;
+
+    // ensure that $dir ends with a slash so that we can concatenate it with the filenames directly
+    $dir = rtrim($dir, "/\\") . "/";
+
+    // use dir() to list files
+    $list = dir($dir);
+    chmod($dir, 0755);
+
+    // store the next file name to $file. if $file is false, that's all -- end the loop.
+    while (($file = $list->read()) !== false) {
+        if ($file === "." || $file === "..") continue;
+        if (is_file($dir . $file)) {
+            unlink($dir . $file);
+            $count++;
+        } else if (is_dir($dir . $file)) {
+            $count += eliminarDir($dir . $file);            
+        }
+    }
+
+    // finally, safe to delete directory!
+    rmdir($dir);
+    
+
+    return $count;
 }

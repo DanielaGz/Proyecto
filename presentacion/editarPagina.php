@@ -4,8 +4,8 @@ $_SESSION["pag"] = $_GET["idpag"];
 if (isset($_GET["sec"])) {
     $seccion = "#" . $_GET["sec"];
 }
-$var = count(glob('pagina/inicio/{*.php}', GLOB_BRACE));
-?>
+$var = count(glob($_SESSION["pag"].'{*.php}', GLOB_BRACE));
+?> 
 <input id="anterior" type="hidden" value="">
 <input id="editando" type="hidden" value="">
 <div class="botones ml-5">
@@ -126,11 +126,11 @@ $var = count(glob('pagina/inicio/{*.php}', GLOB_BRACE));
     function eliminar() {
         if ($("#editando").val() != 0) {
             $.ajax({
-                url: "presentacion/edicion/editarArchivo.php?ed=Eliminar&sec=" + $("#editando").val(),
+                url: "presentacion/edicionUsuario/editarArchivo.php?ed=Eliminar&sec=" + $("#editando").val()+ "<?php echo "&idPag=" . $_SESSION["pag"]; ?>",
                 type: "GET",
                 processData: false,
                 contentType: false,
-                cache: false,
+                cache: false, 
                 success: function(response) {
                     alert(response);
                 }
@@ -139,7 +139,7 @@ $var = count(glob('pagina/inicio/{*.php}', GLOB_BRACE));
                 $(document).ready(function() {
                     var url = "indexAjax.php?pid=<?php echo base64_encode("presentacion/parteUsuario/editar.php") . "&id=" . $_SESSION["id"] . "&idPag=" . $_SESSION["pag"] ?>";
                     $("#vista").load(url);
-                    var url2 = "indexAjax.php?pid=<?php echo base64_encode("presentacion/paginacion.php") ?>";
+                    var url2 = "indexAjax.php?pid=<?php echo base64_encode("presentacion/paginacionUsuario.php"). "&idPag=" . $_SESSION["pag"] ?>";
                     $("#paginacion").load(url2);
                 })
             }, 400);
