@@ -14,9 +14,6 @@
                                                                                         echo base64_encode("presentacion/crearPagina.php");
                                                                                         ?>" role="button" data-toggle="modal" data-target="#exampleModal">Comienza ya!</a>
                     <hr />
-                    <a class="btn text-white rounded-pill letra" href="index.php?pid=<?php
-                                                                                        echo base64_encode("presentacion/crearPagina.php");
-                                                                                        ?>" role="button" onclick="crear()">Comienza ya!</a>
                 </div>
 
             </div>

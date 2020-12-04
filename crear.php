@@ -9,15 +9,16 @@ switch ($_GET["v"]) {
             }
             $carpeta = $fecha->getTimestamp();
             mkdir("paginas/" . $_GET["idP"] . "/" . $carpeta, 0700);
-            $obj = new Pagina("", "", "paginas/" . $_GET["idP"] . "/" . $carpeta, "", $_GET["idU"]);
+            $obj = new Pagina("", $_GET["n"] , "paginas/" . $_GET["idP"] . "/" . $carpeta, "", $_GET["idU"]);
             $obj->insertar();
             full_copy("plantillas/General/", "paginas/" . $_GET["idP"] . "/" . $carpeta);
+            echo "paginas/" . $_GET["idP"] . "/" . $carpeta;
         }
         break;
     case '-1': {
             //EliminarCarpeta($_GET["idP"]);
-            /* $obj = new Pagina("", "",  $_GET["idP"], "", $_GET["idU"]);
-            $obj->eliminar(); */
+            $obj = new Pagina("", "",  $_GET["idP"], "", $_GET["idU"]);
+            $obj->eliminar();
             EliminarCarpeta($_GET["idP"]);
         }
         break;
@@ -57,16 +58,15 @@ function Eliminar($ruta)
     }
 }
 
-function EliminarCarpeta($ruta)
+function EliminarCarpeta($dir)
 {
-    file_exists($ruta) ? "sda" : "";
-    $files = glob($ruta); //obtenemos todos los nombres de los ficheros
-    echo count($files);
-    for ($i = count($files); $i > 0; $i--) {
-        if (is_file($files[$i])) {
-            unlink($files[$i]); //elimino el fichero
-        } else {
-            rmdir($files[$i]);
-        }
+    if(!$dh = @opendir($dir)) return;
+    while (false !== ($current = readdir($dh))) {
+        if($current != '.' && $current != '..') {
+            if (!@unlink($dir.'/'.$current)) 
+                EliminarCarpeta($dir.'/'.$current);
+        }       
     }
+    closedir($dh);
+    @rmdir($dir);
 }

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-    <a class="navbar-brand letra" href="index.php?pid=<?php echo base64_encode("presentacion/inicio.php") ?>"><img src="img/logo.png" width="60vmax"> Inicio</a>
+    <a class="navbar-brand letra" href="index.php?pid=<?php echo base64_encode("presentacion/inicio.php") ?>"><img src="img/logo2.png" width="35vmax"> Inicio</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>

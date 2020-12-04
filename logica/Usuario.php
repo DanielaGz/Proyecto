@@ -73,7 +73,8 @@ class Usuario{
         $this -> conexion -> ejecutar($this -> usuarioDAO -> consultar());
         $this -> conexion -> cerrar();
         $resultado = $this -> conexion -> extraer();
-        $this -> nombre = $resultado[0];
+        $this -> id = $resultado[0];
+        $this -> nombre = $resultado[1];
         $this -> correo = $resultado[1];
         $this -> foto = $resultado[2];
     }

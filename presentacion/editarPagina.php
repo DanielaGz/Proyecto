@@ -4,8 +4,14 @@ $_SESSION["pag"] = $_GET["idpag"];
 if (isset($_GET["sec"])) {
     $seccion = "#" . $_GET["sec"];
 }
-$var = count(glob($_SESSION["pag"].'{*.php}', GLOB_BRACE));
-?> 
+$fecha = new DateTime();
+$obj = new Pagina("", "", $_GET["idpag"]);
+$obj->consultarPag();
+$obj->editar("FechaEd", "NOW()");
+
+
+$var = count(glob($_SESSION["pag"] . '{*.php}', GLOB_BRACE));
+?>
 <input id="anterior" type="hidden" value="">
 <input id="editando" type="hidden" value="">
 <div class="botones ml-5">
@@ -28,7 +34,7 @@ $var = count(glob($_SESSION["pag"].'{*.php}', GLOB_BRACE));
                 <br>
             </div>
             <div>
-                <button class="btn f" type="submit" data-toggle="collapse" data-target="" aria-expanded="false" aria-controls="multiCollapseExample" onclick="eliminar()">
+                <button class="btn f" type="submit" data-toggle="collapse" data-target="" aria-expanded="false" aria-controls="multiCollapseExample" onclick="eliminarsec()">
                     <h6><i class="fas fa-trash-alt"></i></h6>
                 </button>
             </div>
@@ -59,7 +65,7 @@ $var = count(glob($_SESSION["pag"].'{*.php}', GLOB_BRACE));
     <div class="card shadow-lg vista-pagina">
         <div class="card-body" style="margin-top: 5vh;">
             <div>
-                <h5 class="text-center">TU PAGINA EN TIEMPO REAL</h5>
+                <h5 class="text-center">TU PAGINA "<?php echo strtoupper($obj->getNombre()); ?>" EN TIEMPO REAL </h5>
             </div>
             <div id="vista" style="height: 108%;">
 
@@ -75,7 +81,7 @@ $var = count(glob($_SESSION["pag"].'{*.php}', GLOB_BRACE));
                 </div>
 
                 <div class="col-12 col-lg-2 col-xl-2 d-flex justify-content-center align-self-center ">
-                    <a href="index.php?pid=<?php echo base64_encode("presentacion/edicionUsuario/descargar.php"). "&idPag=" . $_SESSION["pag"] . "&id=" . $_SESSION["id"]; ?>" id="Terminar" type="button" value=0 class="btn btn-dark float-right i letra">Terminar</a>
+                    <a href="index.php?pid=<?php echo base64_encode("presentacion/edicionUsuario/descargar.php") . "&idPag=" . $_SESSION["pag"] . "&id=" . $_SESSION["id"]; ?>" id="Terminar" type="button" value=0 class="btn btn-dark float-right i letra">Terminar</a>
                 </div>
             </div>
         </div>
@@ -89,7 +95,7 @@ $var = count(glob($_SESSION["pag"].'{*.php}', GLOB_BRACE));
 <script>
     window.onbeforeunload = function() {
         $.ajax({
-            url: "presentacion/edicionUsuario/editarArchivo.php?ed=Deselec&val=" + $("#editando").val(),
+            url: "presentacion/edicionUsuario/editarArchivo.php?ed=Deselec&val=" + $("#editando").val()+ "<?php echo "&idPag=" . $_SESSION["pag"]; ?>",
             type: "GET",
             processData: false,
             contentType: false,
@@ -123,23 +129,20 @@ $var = count(glob($_SESSION["pag"].'{*.php}', GLOB_BRACE));
         })
     }
 
-    function eliminar() {
+    function eliminarsec() {
         if ($("#editando").val() != 0) {
             $.ajax({
-                url: "presentacion/edicionUsuario/editarArchivo.php?ed=Eliminar&sec=" + $("#editando").val()+ "<?php echo "&idPag=" . $_SESSION["pag"]; ?>",
+                url: "presentacion/edicionUsuario/editarArchivo.php?ed=Eliminar&sec=" + $("#editando").val() + "<?php echo "&idPag=" . $_SESSION["pag"]; ?>",
                 type: "GET",
                 processData: false,
                 contentType: false,
-                cache: false, 
-                success: function(response) {
-                    alert(response);
-                }
+                cache: false
             })
             setTimeout(function() {
                 $(document).ready(function() {
                     var url = "indexAjax.php?pid=<?php echo base64_encode("presentacion/parteUsuario/editar.php") . "&id=" . $_SESSION["id"] . "&idPag=" . $_SESSION["pag"] ?>";
                     $("#vista").load(url);
-                    var url2 = "indexAjax.php?pid=<?php echo base64_encode("presentacion/paginacionUsuario.php"). "&idPag=" . $_SESSION["pag"] ?>";
+                    var url2 = "indexAjax.php?pid=<?php echo base64_encode("presentacion/paginacionUsuario.php") . "&idPag=" . $_SESSION["pag"] ?>";
                     $("#paginacion").load(url2);
                 })
             }, 400);
@@ -163,10 +166,7 @@ $var = count(glob($_SESSION["pag"].'{*.php}', GLOB_BRACE));
             type: "GET",
             processData: false,
             contentType: false,
-            cache: false,
-            success: function(response) {
-                alert(response);
-            }
+            cache: false
         });
     }
 

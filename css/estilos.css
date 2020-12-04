@@ -70,7 +70,7 @@ h6{
   margin-bottom: 0.8vmax;
 }
 .letra{
-  font-size: 1.5vmax;
+  font-size: 1.2vmax;
 }
 .borde1{
   border-top-right-radius: 0.5vmax;
@@ -96,16 +96,11 @@ body{
   position: relative;
   background: #DEF2F1;
 }
-#parallelogram {
-  width: 150px;
-  height: 100px;
-  -webkit-transform: skew(20deg);
-     -moz-transform: skew(20deg);
-       -o-transform: skew(20deg);
-  background: red;
-}
 .b2{
   border-color: rgba(255, 255, 255, 0);
   background-color: rgba(255, 255, 255, 0);
   color: dodgerblue;
+}
+.tam{
+  height: 80%;
 }

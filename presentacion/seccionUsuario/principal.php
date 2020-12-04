@@ -52,9 +52,6 @@
             cache: false,
             error: function() {
                 console.log("No se ha podido obtener la información");
-            },
-            success: function (response){
-                alert(response);
             }
         })
         $.ajax({

@@ -1,0 +1,47 @@
+:root{
+/* base */--b: #3b0c0c;
+  /* head */--e: #050505;
+  /* fondo */--f: #ffffff;
+  /* menu */--m: #0e0a0a;
+  }
+  
+  body{
+    background: var(--f);
+  }
+  .encabezado{
+    background: var(--b);
+  }
+  .navbar{
+    background: var(--m);
+  }
+  .vista-pagina{
+      border-radius: 6px;
+  }
+  .caja{
+    text-align: center;
+  }
+  .btn,.a{
+    background: var(--e);
+  }
+  .selec{
+    position:relative;
+  }
+  .seleccionado {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.281);
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    border: rgb(20, 12, 12) 5px dashed;
+  }
+.card-img-overlay{
+  background-color: rgba(0, 0, 0, 0.205);
+}
+
+.b{
+  border-color: rgba(255, 255, 255, 0);
+}

@@ -5,9 +5,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
-
+	<!-- Seccion1 --><li class='nav-item'><a class='nav-link' href='#Seccion1'>Video</a></li>
 	
-	<!-- Seccion1 --><li class='nav-item'><a class='nav-link' href='#Seccion1'>Seccion1</a></li>
+	
+	<!-- Seccion2 --><li class='nav-item'><a class='nav-link' href='#Seccion2'>Seccion2</a></li>
+	<!-- Seccion3 --><li class='nav-item'><a class='nav-link' href='#Seccion3'>Seccion3</a></li>
 	<!-- nuevo -->
         </ul>
         <span class="navbar-text">

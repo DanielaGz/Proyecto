@@ -34,7 +34,7 @@ class UsuarioDAO{
     }
 
     public function consultar(){
-        return "select nombre, correo, foto
+        return "select idUsuario,nombre, correo, foto
                 from usuario
                 where idUsuario = '" . $this -> id .  "'";
     }

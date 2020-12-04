@@ -19,7 +19,7 @@ if (isset($_GET["cerrarSesion"]) || !isset($_SESSION["id"])) {
 <head>
 	<meta http-equiv=»Cache-Control» content=»no-cache» />
 	<title>Plantillas</title>
-	<link rel="icon" type="image/png" href="img/logo.png" />
+	<link rel="icon" type="image/png" href="img/logo2.png" />
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.1/css/all.css" />
 	<link rel="stylesheet" href="css/estilos.css" />
@@ -45,8 +45,6 @@ if (isset($_GET["cerrarSesion"]) || !isset($_SESSION["id"])) {
 		include "presentacion/menu.php";
 		include $pid;
 	}
-
-
 	?>
 </body>
 

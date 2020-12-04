@@ -71,10 +71,9 @@ if (isset($_GET["ed"])) {
             }
             break;
         case 'Eliminar': {
-                eliminarDir("../../paginas/4/1606095564");
-                /* Editar("<!-- Seccion" . $_GET["sec"] . " -->", "../../" . $_GET["idPag"] . "/menu.php", "\t");
+                Editar("<!-- Seccion" . $_GET["sec"] . " -->", "../../" . $_GET["idPag"] . "/menu.php", "\t");
                 Editar("<!-- Seccion" . $_GET["sec"] . " -->", "../../" . $_GET["idPag"] . "/inicio/inicio.php", "\t");
-                eliminar("../../" . $_GET["idPag"], $_GET["sec"], $total); */
+                eliminar("../../" . $_GET["idPag"], $_GET["sec"], $total);
             }
             break;
     }
@@ -144,34 +143,4 @@ function eliminar($url, $sec, $tot)
             sleep(0.5);
         }
     }
-}
-
-function eliminarDir(string $dir): int
-{
-
-    $count = 0;
-
-    // ensure that $dir ends with a slash so that we can concatenate it with the filenames directly
-    $dir = rtrim($dir, "/\\") . "/";
-
-    // use dir() to list files
-    $list = dir($dir);
-    chmod($dir, 0755);
-
-    // store the next file name to $file. if $file is false, that's all -- end the loop.
-    while (($file = $list->read()) !== false) {
-        if ($file === "." || $file === "..") continue;
-        if (is_file($dir . $file)) {
-            unlink($dir . $file);
-            $count++;
-        } else if (is_dir($dir . $file)) {
-            $count += eliminarDir($dir . $file);            
-        }
-    }
-
-    // finally, safe to delete directory!
-    rmdir($dir);
-    
-
-    return $count;
 }

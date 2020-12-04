@@ -5,7 +5,7 @@
                                     echo base64_encode("presentacion/Inicio.php");
                                     ?>">
                 <br>
-                <img src="img/logo.png" width="70px"></a>
+                <img src="img/logo2.png" width="70px"></a>
 
             <h4><strong>Crea tu plantilla</strong></h4>
            <br> 
