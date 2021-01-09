@@ -10,14 +10,14 @@ if (isset($_GET["select"])) {
         <?php
         for ($i = 0; $i < $total; $i++) {
             if ($seleccionado == $i) {
-                echo "<li class='page-item letra active'>";
+                echo "<li class='page-item active'>";
             } else {
-                echo "<li class='page-item letra'>";
+                echo "<li class='page-item'>";
             }
             if ($i == 0) {
-                echo "<button id='" . $i . "' class='page-link letra' onclick='pagina(this.id)'>Inicio</button></li>";
+                echo "<button id='" . $i . "' class='page-link' onclick='pagina(this.id)'>Menu</button></li>";
             } else {
-                echo "<button id='" . $i . "' class='page-link letra' onclick='pagina(this.id)'>Seccion " . $i . "</button></li>";
+                echo "<button id='" . $i . "' class='page-link' onclick='pagina(this.id)'>" . $i . "</button></li>";
             }
         }
         ?>

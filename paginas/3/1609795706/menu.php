@@ -6,6 +6,8 @@
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
 	<!-- Seccion1 --><li class='nav-item'><a class='nav-link' href='#Seccion1'>Seccion1</a></li>
+	
+	<!-- Seccion2 --><li class='nav-item'><a class='nav-link' href='#Seccion2'>,sdlasda</a></li>
 	<!-- nuevo -->
         </ul>
         <span class="navbar-text">

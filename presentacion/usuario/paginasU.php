@@ -96,8 +96,16 @@ $paginas = $pagina->consultarMod();
                 </button>
             </div>
             <div class="modal-body">
-                ¿Estas seguro de que quieres eliminar el proyecto "nombre"? Una vez lo elimines
-                no podrás recuperar los archivos.
+                <div class="row">
+                    <div class="col-4">
+                        <img src="img/Basura.gif" class="img-fluid" alt="Responsive image">
+                    </div>
+                    <div class="col-8">
+                        ¿Estas seguro de que quieres eliminar el proyecto "nombre"? Una vez lo elimines
+                        no podrás recuperar los archivos.
+                    </div>
+                </div>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary rounded-pill" id="eliminar" value="" onclick="Eliminar(this.value)">Eliminar definitivamente</button>
@@ -148,7 +156,7 @@ $paginas = $pagina->consultarMod();
         window.location.replace("index.php?pid=<?php echo base64_encode("presentacion/editarPagina.php") ?>&idpag=" + val);
     }
 
-    function validar(val){
+    function validar(val) {
         $("#eliminar").val(val);
     }
 </script>

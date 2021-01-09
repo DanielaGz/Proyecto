@@ -73,15 +73,17 @@ $var = count(glob($_SESSION["pag"] . '{*.php}', GLOB_BRACE));
         </div>
         <div class="tarjeta-footer">
             <div class="row ml-5 mr-5 mb-2">
-                <div class="col-12 col-lg-10 col-xl-10 d-felx d-flex justify-content-start">
-                    <div id="paginacion">
-                        <?php include "paginacionUsuario.php" ?>
-                    </div>
-                    <br>
+                <div class="col-12 col-lg-10 col-xl-10 ">
+                    <div class="col-8 ">
+                            <br>
+                            <div id="paginacion" style="overflow-x: auto;">
+                                <?php include "paginacionUsuario.php" ?>
+                            </div>
+                        </div>
                 </div>
 
                 <div class="col-12 col-lg-2 col-xl-2 d-flex justify-content-center align-self-center ">
-                    <a href="index.php?pid=<?php echo base64_encode("presentacion/edicionUsuario/descargar.php") . "&idPag=" . $_SESSION["pag"] . "&id=" . $_SESSION["id"]; ?>" id="Terminar" type="button" value=0 class="btn btn-dark float-right i letra">Terminar</a>
+                    <a href="index.php?pid=<?php echo base64_encode("presentacion/edicionUsuario/descargar.php") . "&idPag=" . $_SESSION["pag"] . "&id=" . $_SESSION["id"]; ?>" id="Terminar" type="button" value=0 class="btn btn-dark float-right i ">Terminar</a>
                 </div>
             </div>
         </div>
@@ -92,10 +94,44 @@ $var = count(glob($_SESSION["pag"] . '{*.php}', GLOB_BRACE));
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <?php include "ayuda/principal.php" ?>
 </div>
+
+<!-- Modal agregar pagina-->
+<div class="modal fade" id="agregarpag" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar página</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-8">
+                        <input type="text" class="form-control rounded-pill" placeholder="Nombre de la pagina">
+                    </div>
+                    <div class="col-4">
+                        <select class="custom-select rounded-pill" id="inputGroupSelect01">
+                            <option selected>Tipo de menu...</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                        </select>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button i" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     window.onbeforeunload = function() {
         $.ajax({
-            url: "presentacion/edicionUsuario/editarArchivo.php?ed=Deselec&val=" + $("#editando").val()+ "<?php echo "&idPag=" . $_SESSION["pag"]; ?>",
+            url: "presentacion/edicionUsuario/editarArchivo.php?ed=Deselec&val=" + $("#editando").val() + "<?php echo "&idPag=" . $_SESSION["pag"]; ?>",
             type: "GET",
             processData: false,
             contentType: false,
