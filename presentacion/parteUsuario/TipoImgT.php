@@ -21,7 +21,7 @@
             <input id="Contenido" type="text" class="form-control i" onchange="EditarIT(this.value,this.id)">
           </div>
           <div class="custom-file">
-            <input type="file" class="custom-file-input" id="imagen" oninput="ImagenIT(this)">
+            <input type="file" class="custom-file-input" id="imagen" oninput="ImagenIT(this)" accept="image/*">
             <label class="custom-file-label i" for="imagen" aria-describedby="inputGroupFileAddon02">Elegir</label>
           </div>
 

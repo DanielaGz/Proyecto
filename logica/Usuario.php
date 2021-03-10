@@ -60,8 +60,7 @@ class Usuario{
         $this -> conexion -> cerrar();       
         if ($this -> conexion -> numFilas() == 1){            
             $resultado = $this -> conexion -> extraer();
-            $this -> id = $resultado[0];
-            $this -> estado = $resultado[1];             
+            $this -> id = $resultado[0];          
             return true;        
         }else {
             return false;
@@ -75,10 +74,34 @@ class Usuario{
         $resultado = $this -> conexion -> extraer();
         $this -> id = $resultado[0];
         $this -> nombre = $resultado[1];
-        $this -> correo = $resultado[1];
-        $this -> foto = $resultado[2];
+        $this -> correo = $resultado[2];
+        $this -> foto = $resultado[3];
     }
 
+    public function Editar(){
+        $this -> conexion -> abrir();        
+        $this -> conexion -> ejecutar($this -> usuarioDAO -> Editar());        
+        $this -> conexion -> cerrar(); 
+    }
+
+    public function VerificarPass(){
+        $this -> conexion -> abrir();        
+        $this -> conexion -> ejecutar($this -> usuarioDAO -> VerificarPass());        
+        $this -> conexion -> cerrar(); 
+        if ($this -> conexion -> numFilas() == 1){            
+            $resultado = $this -> conexion -> extraer();
+            $this -> id = $resultado[0];          
+            return true;        
+        }else {
+            return false;
+        }
+    }
+
+    public function EditarPass(){
+        $this -> conexion -> abrir();        
+        $this -> conexion -> ejecutar($this -> usuarioDAO -> EditarPass());        
+        $this -> conexion -> cerrar(); 
+    }
     
 
 }

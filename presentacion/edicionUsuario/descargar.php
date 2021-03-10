@@ -16,6 +16,8 @@ $archivos = new RecursiveIteratorIterator(
     RecursiveIteratorIterator::LEAVES_ONLY
 );
 
+$contador=0;
+
 foreach ($archivos as $archivo) {
     // No queremos agregar los directorios, pues los nombres
     // de estos se agregarán cuando se agreguen los archivos
@@ -23,13 +25,19 @@ foreach ($archivos as $archivo) {
         continue;
     }
 
+    
+
     $rutaAbsoluta = $archivo->getRealPath();
     // Cortamos para que, suponiendo que la ruta base es: C:\imágenes ...
     // [C:\imágenes\perro.png] se convierta en [perro.png]
     // Y no, no es el basename porque:
     // [C:\imágenes\vacaciones\familia.png] se convierte en [vacaciones\familia.png]
-    $nombreArchivo = substr($rutaAbsoluta, strlen($rutaDelDirectorio) + 1);
+    $nombreArchivo = 'Pagina/'.substr($rutaAbsoluta, strlen('C:/xampp/htdocs/Proyecto/'.$rutaDelDirectorio) + 1);
+    /* echo $rutaAbsoluta.'<br>';
+    echo $rutaDelDirectorio.'<br>';
+    echo $nombreArchivo.'<br>'; */
     $zip->addFile($rutaAbsoluta, $nombreArchivo);
+    $contador++;
 }
 // No olvides cerrar el archivo
 $resultado = $zip->close();
@@ -65,6 +73,8 @@ if (is_file($path)) {
     header("Content-Transfer-Encoding: binary");
     // Descargar el archivo
     readfile($path);
+
+    unlink($path);
 } else {
     die("El archivo no existe.");
 }

@@ -21,7 +21,7 @@
     text-align: center;
     word-wrap: break-word;
     margin-top: 3vmax;
-    z-index: 2;
+    z-index: 4;
 }
 .bot{
   z-index: 3;
@@ -66,12 +66,9 @@ h6{
   border-radius: 2vmax;
   margin-bottom: 0.8vmax;
 }
-.letra{
-  font-size: 1.3vmax;
-}
 .borde1{
-  border-top-right-radius: 0.5vmax;
-  border-top-left-radius: 0.5vmax;
+  border-top-right-radius: 2vh;
+  border-top-left-radius: 2vh;
 }
 .nav-link,.nav-link:hover{
   color: aliceblue;
@@ -100,4 +97,43 @@ body{
 }
 .tam{
   height: 80%;
+}
+
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 980px) {
+  .letra {
+    font-size: 35px;
+  }
+  .imagen{
+    width: 6vmax;
+  }
+  .contenedor{
+    width: 100%;
+  }
+  .marb{
+    margin-left: 2vmax;
+  }
+  .iniciar{
+    display: none;
+  }
+}
+
+@media screen and (min-width: 981px) {
+  .letra {
+    font-size: 20px;
+  }
+  .imagen{
+    width: 50px;
+  }
+  .contenedor{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .marb{
+    margin-left: 10px;
+  }
+  .iniciarcell{
+    display: none;
+  }
 }

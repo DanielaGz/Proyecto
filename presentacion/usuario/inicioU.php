@@ -5,25 +5,14 @@ $pagina = new Pagina("", "", "", "", $_SESSION["id"]);
 $paginas = $pagina->consultarMod2();
 ?>
 <div class="container mt-5">
-    <div class="card tam">
+    <div class="card ">
         <div class="card-header">
-            <h6 class="letra text-white text-center">HOLA DENUEVO <?php echo strtoupper($usuario->getNombre()); ?></h6>
+            <h6 class="letra text-white text-center">HOLA <?php echo $usuario->getNombre(); ?></h6>
         </div>
         <div class="card-body">
 
             <div class="row">
-                <div class="col-lg-8 col-md-8 col-12">
-                    <div class="row">
-                        <div class="col-4">
-                            <img src="img/usuario.png" class="img-fluid" alt="Responsive image">
-                        </div>
-                        <div class="col-8">
-
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-4">
+                <div class="col-8">
                     <div class="card borde">
                         <div class="card-header borde1">
                             <h6 class="letra text-white text-center">TUS ULTIMOS PROYECTOS</h6>
@@ -52,11 +41,20 @@ $paginas = $pagina->consultarMod2();
                         </div>
                     </div>
                 </div>
+                <div class="col-4">
+                    <a tabindex="0" class="" role="button" id="pop" data-toggle="popover" data-trigger="focus" title="Hola!" data-content="Me alegra verte denuevo <?php echo $usuario -> getNombre(); ?> ">
+                        <img style=" max-height: 400px;" src="img/logoanim.gif" class="img-fluid" alt="Responsive image">
+                    </a>
+                </div>
             </div>
-
-        </div>
-        <div class="card-footer">
-
         </div>
     </div>
 </div>
+
+<script>
+    $('#pop').popover('show');
+
+    function Editar(val) {
+        window.location.replace("index.php?pid=<?php echo base64_encode("presentacion/editarPagina.php") ?>&idpag=" + val);
+    }
+</script>

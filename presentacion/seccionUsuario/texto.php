@@ -28,6 +28,7 @@
             cache: false,
             success: function(response) {
                 ElegirSeccion(response);
+                $('#secc').collapse('hide');
             }
         })
     }

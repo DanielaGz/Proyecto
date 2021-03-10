@@ -1,5 +1,5 @@
 <?php
-$total = count(glob($_GET["idPag"].'/inicio/{*.php}', GLOB_BRACE));
+$total = count(glob($_GET["idPag"].'/presentacion/{*.php}', GLOB_BRACE));
 $seleccionado = 0;
 if (isset($_GET["select"])) {
     $seleccionado = $_GET["select"];
@@ -15,9 +15,9 @@ if (isset($_GET["select"])) {
                 echo "<li class='page-item'>";
             }
             if ($i == 0) {
-                echo "<button id='" . $i . "' class='page-link' onclick='pagina(this.id)'>Menu</button></li>";
+                echo "<button id='" . $i . "' class='page-link letra' onclick='pagina(this.id)'>Menu</button></li>";
             } else {
-                echo "<button id='" . $i . "' class='page-link' onclick='pagina(this.id)'>" . $i . "</button></li>";
+                echo "<button id='" . $i . "' class='page-link letra' onclick='pagina(this.id)'>" . $i . "</button></li>";
             }
         }
         ?>

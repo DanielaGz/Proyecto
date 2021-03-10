@@ -14,28 +14,34 @@
 
         </div>
     </div>
+
+    <div class="card-footer">
+        <button type="button" class="btn text-white rounded-pill letra" data-toggle="modal" data-target="#Crear">
+            Crear <i class="fas fa-pencil-alt"></i>
+        </button>
+    </div>
 </div>
 
 <script>
     function seccion(id) {
         switch (id) {
             case '1': {
-                var url = "indexAjax.php?pid=<?php echo base64_encode("presentacion/seccionUsuario/imagen.php"). "&id=".$_GET["id"]."&idPag=".$_GET["idPag"] ?>";
+                var url = "indexAjax.php?pid=<?php echo base64_encode("presentacion/seccionUsuario/imagen.php") . "&id=" . $_GET["id"] . "&idPag=" . $_GET["idPag"] ?>";
                 $("#seccion").load(url);
             }
             break;
         case '2': {
-            var url = "indexAjax.php?pid=<?php echo base64_encode("presentacion/seccionUsuario/imagenTexto.php"). "&id=".$_GET["id"]."&idPag=".$_GET["idPag"] ?>";
+            var url = "indexAjax.php?pid=<?php echo base64_encode("presentacion/seccionUsuario/imagenTexto.php") . "&id=" . $_GET["id"] . "&idPag=" . $_GET["idPag"] ?>";
             $("#seccion").load(url);
         }
         break;
         case '3': {
-            var url = "indexAjax.php?pid=<?php echo base64_encode("presentacion/seccionUsuario/texto.php") . "&id=".$_GET["id"]."&idPag=".$_GET["idPag"] ?>";
+            var url = "indexAjax.php?pid=<?php echo base64_encode("presentacion/seccionUsuario/texto.php") . "&id=" . $_GET["id"] . "&idPag=" . $_GET["idPag"] ?>";
             $("#seccion").load(url);
         }
         break;
         case '4': {
-            var url = "indexAjax.php?pid=<?php echo base64_encode("presentacion/seccionUsuario/video.php") . "&id=".$_GET["id"]."&idPag=".$_GET["idPag"] ?>";
+            var url = "indexAjax.php?pid=<?php echo base64_encode("presentacion/seccionUsuario/video.php") . "&id=" . $_GET["id"] . "&idPag=" . $_GET["idPag"] ?>";
             $("#seccion").load(url);
         }
         break;
@@ -43,7 +49,7 @@
     }
 
     function ElegirSeccion(id) {
-        var f = "<?php echo "&id=".$_GET["id"]."&idPag=".$_GET["idPag"]; ?>";
+        var f = "<?php echo "&id=" . $_GET["id"] . "&idPag=" . $_GET["idPag"]; ?>";
         $.ajax({
             url: "presentacion/edicionUsuario/editarArchivo.php?ed=Agregar&val=" + id + f,
             type: "GET",
@@ -65,9 +71,9 @@
             }
         })
         $(document).ready(function() {
-            var url = "indexAjax.php?pid=<?php echo base64_encode("presentacion/parteUsuario/editar.php") ?>"+f;
+            var url = "indexAjax.php?pid=<?php echo base64_encode("presentacion/parteUsuario/editar.php") ?>&sec=" + $("#editando").val() + f;
             $("#vista").load(url);
-            var url2 = "indexAjax.php?pid=<?php echo base64_encode("presentacion/paginacionUsuario.php") ?>&sec=" + $("#editando").val()+f;
+            var url2 = "indexAjax.php?pid=<?php echo base64_encode("presentacion/paginacionUsuario.php") ?>&sec=" + $("#editando").val() + f;
             $("#paginacion").load(url2);
         })
 

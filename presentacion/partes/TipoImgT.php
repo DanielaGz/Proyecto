@@ -47,7 +47,7 @@
       contentType: false,
       cache: false,
       error: function() {
-        console.log("No se ha podido obtener la información");
+        console.log("No se ha podido obtener la información imagen texto");
       }
     })
     $(document).ready(function() {
@@ -84,7 +84,7 @@
         cache: false,
 
         error: function() {
-          console.log("No se ha podido obtener la información");
+          console.log("No se ha podido obtener la información sad");
         }
       })
       $(document).ready(function() {

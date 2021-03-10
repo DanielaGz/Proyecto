@@ -7,7 +7,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 ">
+        <div class="col-lg-3 iniciar">
             <div class="card m-1 shadow-lg " style="border-radius: 3vmax; align-items: center;">
                 <div class="card-body text-center">
                     <a class="btn text-white rounded-pill letra" href="index.php?pid=<?php
@@ -18,15 +18,26 @@
 
             </div>
         </div>
+        <div class="col-lg-3 iniciarcell">
+            <br>
+            <div class="card m-1 shadow-lg " style="border-radius: 3vmax; align-items: center;">
+                <div class="card-header letra borde1" style="width: 100%; border-top-left-radius: 2vmax; border-top-right-radius: 2vmax;">
+                    Inicia sesión
+                </div>
+                <div class="card-body text-center">
+                    <?php include "iniciar.php" ?>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
 <!-- Modal -->
 <div class="modal fade mt-5" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog ">
+    <div class="modal-dialog p">
         <div class="modal-content borde">
             <div class="modal-header cabeza text-white borde1">
-                <h5 class="modal-title" id="exampleModalLabel">Iniciar sesion</h5>
+                <h5 class="modal-title letra" id="exampleModalLabel">Iniciar sesion</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -60,8 +71,8 @@
     }
 
     <?php if (isset($_GET["error"])) {
-        ?>
+    ?>
         $('#exampleModal').modal('show')
-        <?php
+    <?php
     } ?>
 </script>

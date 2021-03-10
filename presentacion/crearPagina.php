@@ -3,7 +3,7 @@ $seccion = "";
 if (isset($_GET["sec"])) {
     $seccion = "#" . $_GET["sec"];
 }
-$var = count(glob('pagina/inicio/{*.php}', GLOB_BRACE));
+$var = count(glob('pagina/presentacion/{*.php}', GLOB_BRACE));
 ?>
 <input id="anterior" type="hidden" value="">
 <input id="editando" type="hidden" value="">

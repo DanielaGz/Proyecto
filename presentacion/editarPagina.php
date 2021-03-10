@@ -14,7 +14,7 @@ $var = count(glob($_SESSION["pag"] . '{*.php}', GLOB_BRACE));
 ?>
 <input id="anterior" type="hidden" value="">
 <input id="editando" type="hidden" value="">
-<div class="botones ml-5">
+<div class="botones marb">
     <div class="row tex-left">
         <div class="col-1 col-xs-2 bot">
             <div>
@@ -60,12 +60,12 @@ $var = count(glob($_SESSION["pag"] . '{*.php}', GLOB_BRACE));
 </div>
 
 <input id="secciones" type="hidden" value="0" class="form-control" min="0" max="<?php echo $var - 1; ?>" oninput="cambiar(this.value)">
-<div class="container-lg container-xl mt-5 mb-5">
+<div class="contenedor mt-5 mb-5 center">
 
     <div class="card shadow-lg vista-pagina">
         <div class="card-body" style="margin-top: 5vh;">
             <div>
-                <h5 class="text-center">TU PAGINA "<?php echo strtoupper($obj->getNombre()); ?>" EN TIEMPO REAL </h5>
+                <h5 class="text-center letra">TU PAGINA "<?php echo strtoupper($obj->getNombre()); ?>" EN TIEMPO REAL </h5>
             </div>
             <div id="vista" style="height: 108%;">
 
@@ -75,15 +75,16 @@ $var = count(glob($_SESSION["pag"] . '{*.php}', GLOB_BRACE));
             <div class="row ml-5 mr-5 mb-2">
                 <div class="col-12 col-lg-10 col-xl-10 ">
                     <div class="col-8 ">
-                            <br>
-                            <div id="paginacion" style="overflow-x: auto;">
-                                <?php include "paginacionUsuario.php" ?>
-                            </div>
+                        <br>
+                        <div id="paginacion" style="overflow-x: auto;">
+                            <?php include "paginacionUsuario.php" ?>
                         </div>
+                    </div>
                 </div>
 
                 <div class="col-12 col-lg-2 col-xl-2 d-flex justify-content-center align-self-center ">
-                    <a href="index.php?pid=<?php echo base64_encode("presentacion/edicionUsuario/descargar.php") . "&idPag=" . $_SESSION["pag"] . "&id=" . $_SESSION["id"]; ?>" id="Terminar" type="button" value=0 class="btn btn-dark float-right i ">Terminar</a>
+                    <a href="indexPag.php?pid=<?php echo base64_encode($_SESSION['pag']); ?>" target="_blank" class="btn btn-dark float-right i letra"><i class="fas fa-eye"></i></a>
+                    <a href="index.php?pid=<?php echo base64_encode("presentacion/edicionUsuario/descargar.php") . "&idPag=" . $_SESSION["pag"] . "&id=" . $_SESSION["id"]; ?>" id="Terminar" type="button" value=0 class="btn btn-dark float-right i letra"><i class="fas fa-download"></i></a>
                 </div>
             </div>
         </div>
@@ -122,7 +123,27 @@ $var = count(glob($_SESSION["pag"] . '{*.php}', GLOB_BRACE));
 
             </div>
             <div class="modal-footer">
-                <button type="button i" class="btn btn-primary">Save changes</button>
+                <button type="button i" class="btn btn-primary letra">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="Crear" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header encabezado text-white letra">
+                <h5 class="modal-title" id="exampleModalLabel">Crea tu propia sección!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Guardar</button>
             </div>
         </div>
     </div>

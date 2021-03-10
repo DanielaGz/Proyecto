@@ -1,5 +1,5 @@
 <?php
-$total = count(glob('../../pagina/inicio/{*.php}', GLOB_BRACE));
+$total = count(glob('../../pagina/presentacion/{*.php}', GLOB_BRACE));
 ?>
 <section class="mx-2 pb-3">
 

@@ -1,5 +1,5 @@
 <?php
-$total = count(glob('../../' . $_GET["idPag"] . '/inicio/{*.php}', GLOB_BRACE));
+$total = count(glob('../../' . $_GET["idPag"] . '/presentacion/{*.php}', GLOB_BRACE));
 ?>
 <section class="mx-2 pb-3">
 
@@ -10,7 +10,7 @@ $total = count(glob('../../' . $_GET["idPag"] . '/inicio/{*.php}', GLOB_BRACE));
   </ul>
   <div class="tab-content card pt-5" id="myTabContentMD">
     <div class="custom-file mb-5">
-      <input type="file" class="custom-file-input" id="imagen" oninput="Imagen(this)" multiple>
+      <input type="file" class="custom-file-input" id="imagen" oninput="Imagen(this)" multiple accept="image/*">
       <label class="custom-file-label i" for="imagen" aria-describedby="inputGroupFileAddon02">Elegir</label>
     </div>
   </div>
@@ -42,7 +42,7 @@ $total = count(glob('../../' . $_GET["idPag"] . '/inicio/{*.php}', GLOB_BRACE));
     $.ajax({
       url: "presentacion/edicionUsuario/editarImagen.php?img=" + imagenes + f,
       type: "POST",
-      data: form,
+      data: form, 
       processData: false,
       contentType: false,
       cache: false,

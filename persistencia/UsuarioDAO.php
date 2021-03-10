@@ -17,7 +17,7 @@ class UsuarioDAO{
     /* Registro */
 
     public function existeCorreo(){
-        return "select correo
+        echo "select correo
                 from usuario 
                 where correo = '" . $this -> correo .  "'";
     }
@@ -39,6 +39,23 @@ class UsuarioDAO{
                 where idUsuario = '" . $this -> id .  "'";
     }
 
-}
+    public function Editar(){
+        return "update usuario
+                set nombre='".$this -> nombre."',
+                foto ='".$this ->foto."'
+                where idUsuario = '" . $this -> id .  "'";
+    }
 
-?>
+    public function VerificarPass(){
+        return "select idUsuario
+                from Usuario 
+                where idUsuario = '" . $this -> id .  "' and clave = '" . md5($this -> clave) . "'";
+    }
+
+    public function EditarPass(){
+        return "update usuario
+                set clave='".md5($this -> clave)."'
+                where idUsuario = '" . $this -> id .  "'";
+    }
+
+}

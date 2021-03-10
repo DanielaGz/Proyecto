@@ -1,5 +1,5 @@
 <?php
-$total = count(glob('pagina/inicio/{*.php}', GLOB_BRACE));
+$total = count(glob('pagina/presentacion/{*.php}', GLOB_BRACE));
 $seleccionado = 0;
 if (isset($_GET["select"])) {
     $seleccionado = $_GET["select"];

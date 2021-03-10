@@ -107,8 +107,14 @@ $paginas = $pagina->consultarMod();
                 </div>
 
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer d-flex justify-content-between">
                 <button type="button" class="btn btn-primary rounded-pill" id="eliminar" value="" onclick="Eliminar(this.value)">Eliminar definitivamente</button>
+
+                <div class="text-info" style="display: none;" id="iconoCarga">
+                    <div class="spinner-border text-info" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div> Eliminando...
+                </div>
             </div>
         </div>
     </div>
@@ -131,15 +137,20 @@ $paginas = $pagina->consultarMod();
     }
 
     function Eliminar(id) {
+        $("#iconoCarga").css("display", "block");
         $.ajax({
             url: "crear.php?v=-1&idP=" + id + "&idU=" + <?php echo $_SESSION["id"] ?>,
             type: "GET",
             processData: false,
             contentType: false,
-            cache: false
+            cache: false,
+            success: function(response) {
+                var url = "indexAjax.php?pid=<?php echo base64_encode("presentacion/Usuario/PaginasUAjax.php") . "&sec=" . $_SESSION["id"] ?>" + "&c=" + 1;
+                $("#paginasU").load(url);
+                $("#iconoCarga").css("display", "none");
+                $('#elim').modal('hide');
+            }
         })
-        var url = "indexAjax.php?pid=<?php echo base64_encode("presentacion/Usuario/PaginasUAjax.php") . "&sec=" . $_SESSION["id"] ?>" + "&c=" + 1;
-        $("#paginasU").load(url);
     }
 
     function Organizar(val) {

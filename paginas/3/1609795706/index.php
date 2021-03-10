@@ -35,7 +35,7 @@ if (isset($_GET["pid"])) {
 		include $pid;
 	} else {
 		clearstatcache();
-		include "inicio/inicio.php";
+		include "presentacion/inicio.php";
 	}
 
 	?>
