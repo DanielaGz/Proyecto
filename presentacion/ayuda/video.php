@@ -3,7 +3,19 @@
 <?php
 switch($_GET["tut"]){
     case '1':{
-        echo "<iframe class='embed-responsive-item' src='https://www.youtube.com/embed/pwc1AjaA5HE' allowfullscreen style='border-radius: 1vmax;'></iframe>";
+        echo "<iframe class='embed-responsive-item' src='https://www.youtube.com/embed/pfcFfY548Ik' allowfullscreen style='border-radius: 1vmax;'></iframe>";
+    }break;
+    case '2':{
+        echo "<iframe class='embed-responsive-item' src='https://www.youtube.com/embed/KCI54bzp5Cg' allowfullscreen style='border-radius: 1vmax;'></iframe>";
+    }break;
+    case '3':{
+        echo "<iframe class='embed-responsive-item' src='https://www.youtube.com/embed/7kwAgGiEjI0' allowfullscreen style='border-radius: 1vmax;'></iframe>";
+    }break;
+    case '4':{
+        echo "<iframe class='embed-responsive-item' src='https://www.youtube.com/embed/20rnfdz9eSo' allowfullscreen style='border-radius: 1vmax;'></iframe>";
+    }break;
+    case '5':{
+        echo "<iframe class='embed-responsive-item' src='https://www.youtube.com/embed/-JcvdDiABpg' allowfullscreen style='border-radius: 1vmax;'></iframe>";
     }break;
 }
 ?>

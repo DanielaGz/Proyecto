@@ -2,45 +2,33 @@
 
 if (isset($_POST['nombre'])) {
     $fecha = new DateTime();
-    $usuario = new Usuario($_SESSION["id"], $_POST['nombre']);
+    $usuario = new Administrador($_SESSION["id"], $_POST['nombre']);
     $tmp = $_FILES['foto']["tmp_name"];
     $usuario->consultar();
-    if ($tmp != '') {
+    if ($tmp !='') {
         if (file_exists($usuario->getFoto())) {
             unlink($usuario->getFoto());
         }
         $folder = 'img/Usuarios/' . $fecha->getTimestamp() . '.jpg';
         move_uploaded_file($tmp, $folder);
-        $usuario = new Usuario($_SESSION["id"], $_POST['nombre'], "", "", $folder);
+        $usuario = new Administrador($_SESSION["id"], $_POST['nombre'],"","",$folder);
         $usuario->Editar();
-    } else {
-        $usuario = new Usuario($_SESSION["id"], $_POST['nombre'], "", "", $usuario->getFoto());
+    }else{
+        $usuario = new Administrador($_SESSION["id"], $_POST['nombre'],"","",$usuario->getFoto());
         $usuario->Editar();
     }
 
-    $fecha = new DateTime();
-    $id = $fecha->getTimestamp();
-    $log = new Log($id, 'Editó su información personal');
-    $log->insertar();
-    $ulog = new UsuarioLog($_SESSION['id'], $id);
-    $ulog->insertar();
+    
 } else if (isset($_POST['cnueva'])) {
     $v = false;
-    $usuario = new Usuario($_SESSION["id"], "", "", $_POST['cant']);
+    $usuario = new Administrador($_SESSION["id"], "", "", $_POST['cant']);
     if ($usuario->VerificarPass()) {
-        $usuario = new Usuario($_SESSION["id"], "", "", $_POST['cnueva']);
+        $usuario = new Administrador($_SESSION["id"], "", "", $_POST['cnueva']);
         $usuario->EditarPass();
         $v = true;
-
-        $fecha = new DateTime();
-        $id = $fecha->getTimestamp();
-        $log = new Log($id, 'Editó su contraseña');
-        $log->insertar();
-        $ulog = new UsuarioLog($_SESSION['id'], $id);
-        $ulog->insertar();
     }
 } else {
-    $usuario = new Usuario($_SESSION["id"]);
+    $usuario = new Administrador($_SESSION["id"]);
 }
 
 $usuario->consultar();
@@ -56,7 +44,7 @@ $usuario->consultar();
                 <div class="card-body">
                     <div class="row ml-5 mr-5">
                         <div class="col-lg-3 col-md-3 col-12">
-                            <img style=" max-height: 400px;" src="<?php echo ($usuario->getFoto() == '') ? 'img/usuario.png' : $usuario->getFoto(); ?>" class="img-fluid" alt="Responsive image">
+                            <img style=" max-height: 400px;" src="<?php echo ($usuario->getFoto()=='')?'img/usuario.png':$usuario->getFoto(); ?>" class="img-fluid" alt="Responsive image">
                         </div>
                         <div class="ml-5 col-lg-8 col-md-8 col-12 d-flex align-items-center">
                             <div class="table-responsive ">
@@ -149,7 +137,7 @@ $usuario->consultar();
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="index.php?pid=<?php echo base64_encode("presentacion/usuario/informacion.php") ?>" method="post" enctype="multipart/form-data">
+            <form action="index.php?pid=<?php echo base64_encode("presentacion/administrador/informacion.php") ?>" method="post" enctype="multipart/form-data">
 
                 <div class="modal-body letra">
                     Nombre: <input type="text" name="nombre" class="form-control letra rounded-pill" value="<?php echo $usuario->getNombre(); ?>">

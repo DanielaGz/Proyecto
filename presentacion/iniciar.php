@@ -15,6 +15,8 @@
         echo "<div class=\"alert alert-success\" role=\"alert\">Usuario Registrado, inicie sesión</div>";
     } else if (isset($_GET["error"]) && $_GET["error"] == 3) {
         echo "<div class=\"alert alert-danger\" role=\"alert\">Correo o clave erroneos</div>";
+    }else if (isset($_GET["error"]) && $_GET["error"] == 4) {
+        echo "<div class=\"alert alert-danger\" role=\"alert\">Su usuario ha sido bloqueado indefinidamente</div>";
     }
     ?>
 </form>

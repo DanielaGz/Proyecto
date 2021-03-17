@@ -15,11 +15,11 @@
         </div>
     </div>
 
-    <div class="card-footer">
+<!--     <div class="card-footer">
         <button type="button" class="btn text-white rounded-pill letra" data-toggle="modal" data-target="#Crear">
             Crear <i class="fas fa-pencil-alt"></i>
         </button>
-    </div>
+    </div> -->
 </div>
 
 <script>

@@ -62,7 +62,6 @@ h6{
   font-size: 3vh;
 }
 .i{
-  font-size: 1.2vmax;
   border-radius: 2vmax;
   margin-bottom: 0.8vmax;
 }
@@ -85,6 +84,10 @@ h6{
 .b{
   border: red 5px none;
   background-color:  rgba(0, 0, 0, 0);
+}
+.l.active {
+  background-color: linear-gradient(#2B7A78,#3AAFA9);
+  border-color: linear-gradient(#2B7A78,#3AAFA9);
 }
 body{
   position: relative;

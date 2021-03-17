@@ -15,7 +15,7 @@ $paginas = $pagina->consultarMod2();
                 <div class="col-8">
                     <div class="card borde">
                         <div class="card-header borde1">
-                            <h6 class="letra text-white text-center">TUS ULTIMOS PROYECTOS</h6>
+                            <h6 class="letra text-white text-center">TUS ÚLTIMOS PROYECTOS</h6>
                         </div>
                         <div class="card-body">
                             <?php
@@ -37,15 +37,46 @@ $paginas = $pagina->consultarMod2();
                                 </div>
                             <?php
                             }
+                            if (count($paginas) == 0) {
+                            ?>
+                                <center>
+                                    <h6>AUN NO TIENES PROYECTOS</h6>
+                                    <button class="btn text-white rounded-pill letra" type="submit" data-toggle="modal" data-target="#exampleModal">
+                                        Iniciar proyecto <i class="fas fa-plus-circle"></i>
+                                    </button>
+                                </center>
+
+                            <?php
+                            }
                             ?>
                         </div>
                     </div>
                 </div>
                 <div class="col-4">
-                    <a tabindex="0" class="" role="button" id="pop" data-toggle="popover" data-trigger="focus" title="Hola!" data-content="Me alegra verte denuevo <?php echo $usuario -> getNombre(); ?> ">
-                        <img style=" max-height: 400px;" src="img/logoanim.gif" class="img-fluid" alt="Responsive image">
+                    <a tabindex="0" class="" role="button" id="pop" data-toggle="popover" data-placement="bottom" data-trigger="focus" title="Hola!" data-content="Me alegra verte <?php echo $usuario->getNombre(); ?> ">
+                        <img style=" max-height: 400px;" src="img/saludo2.gif" class="img-fluid" alt="Responsive image">
                     </a>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+        <div class="modal-content borde shadow-lg">
+            <div class="modal-header cabeza letra borde1 text-center">
+                <h5 class="modal-title letra " id="exampleModalLabel">Escribe el nombre para tu proyecto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="text" class="form-control rounded-pill letra" placeholder="Nombre" id="nombreplant">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary rounded-pill" id=<?php echo $_SESSION["id"]; ?> onclick="crearPag(this.id)">Crear</button>
             </div>
         </div>
     </div>
@@ -57,4 +88,20 @@ $paginas = $pagina->consultarMod2();
     function Editar(val) {
         window.location.replace("index.php?pid=<?php echo base64_encode("presentacion/editarPagina.php") ?>&idpag=" + val);
     }
+
+    function crearPag(id) {
+        let nom = $("#nombreplant").val();
+        $.ajax({
+            url: "crear.php?n=" + nom + "&v=-2&idP=" + id + "&idU=" + <?php echo $_SESSION["id"] ?>,
+            type: "GET",
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function(response) {
+                alert("Su pagina se ha creado correctamente");
+                Editar(response);
+            }
+        })
+    }
+
 </script>

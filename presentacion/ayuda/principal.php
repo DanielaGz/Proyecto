@@ -1,6 +1,6 @@
 <div class="modal-dialog modal-xl ">
-    <div class="modal-content ">
-        <div class="modal-header">
+    <div class="modal-content borde shadow-lg mt-5">
+        <div class="modal-header encabezado borde1 text-white">
             <h5 class="modal-title" id="exampleModalLabel">Tutoriales</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -12,7 +12,7 @@
 
                 </div>
                 <div class="col-lg-3 mt-4 mb-4 overflow-auto" style="max-height: 30vmax;">
-                    <div id="myList" class="list-group overflow-auto">
+                    <div id="myList" class="list-group overflow-auto borde">
                         <button type="button" value="1" class="list-group-item list-group-item-action active">¿Cómo agregar una seccion?</button>
                         <button type="button" value="2" class="list-group-item list-group-item-action">¿Cómo eliminar una seccion?</button>
                         <button type="button" value="3" class="list-group-item list-group-item-action">¿Cómo editar las secciones?</button>
@@ -25,7 +25,7 @@
         </div>
         <div class="modal-footer">
             <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
         </div>
     </div>
 </div>

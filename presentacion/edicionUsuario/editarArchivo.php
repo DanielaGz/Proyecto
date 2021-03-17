@@ -1,5 +1,7 @@
 <?php
-$total = count(glob('../../' . $_GET["idPag"] . '/presentacion/{*.php}', GLOB_BRACE));
+if (isset($_GET["idPag"])) {
+    $total = count(glob('../../' . $_GET["idPag"] . '/presentacion/{*.php}', GLOB_BRACE));
+}
 if (isset($_GET["ed"])) {
     switch ($_GET["ed"]) {
         case 'base': {
@@ -12,6 +14,10 @@ if (isset($_GET["ed"])) {
             break;
         case 'fondo': {
                 Editar($_GET["ed"], "../../" . $_GET["idPag"] . "/css/estilos.css", "/* fondo */--f: #" . $_GET["val"] . ";");
+            }
+            break;
+        case 'letra': {
+                Editar($_GET["ed"], "../../" . $_GET["idPag"] . "/css/estilos.css", "/* letra */--l: #" . $_GET["val"] . ";");
             }
             break;
         case 'head': {
@@ -27,11 +33,11 @@ if (isset($_GET["ed"])) {
             }
             break;
         case 'Agregar': {
-                Editar("<!-- Nueva -->", '../../' . $_GET["idPag"] . '/presentacion/inicio.php', "\t<!-- Seccion" . $_GET["val"] . " --><div id='Seccion" . $_GET["val"] . "' class='selec'><div class='numeracion'>".$_GET["val"]."</div><?php include 'seccion" . $_GET["val"] . ".php' ?></div>" . PHP_EOL . "\t<!-- Nueva -->");
+                Editar("<!-- Nueva -->", '../../' . $_GET["idPag"] . '/presentacion/inicio.php', "\t<!-- Seccion" . $_GET["val"] . " --><div id='Seccion" . $_GET["val"] . "' class='selec'><div class='numeracion'>" . $_GET["val"] . "</div><?php include 'seccion" . $_GET["val"] . ".php' ?></div>" . PHP_EOL . "\t<!-- Nueva -->");
             }
             break;
         case 'Menu': {
-                Editar("<!-- nuevo -->", '../../' . $_GET["idPag"] . '/menu.php', "\t<!-- Seccion" . $_GET["val"] . " --><li class='nav-item'><a class='nav-link' href='#Seccion" . $_GET["val"] . "'>Seccion" . $_GET["val"] . "</a></li>" . PHP_EOL . "\t<!-- nuevo -->");
+                Editar("<!-- nuevo -->", '../../' . $_GET["idPag"] . '/menu.php', "\t<!-- Seccion" . $_GET["val"] . " --><li class='nav-item'><a class='nav-link c' href='#Seccion" . $_GET["val"] . "'>Seccion" . $_GET["val"] . "</a></li>" . PHP_EOL . "\t<!-- nuevo -->");
             }
             break;
         case 'Seleccionar': {
@@ -39,7 +45,7 @@ if (isset($_GET["ed"])) {
             }
             break;
         case 'Deselec': {
-                Editar("<!-- Seccion" . $_GET["val"] . " -->", '../../' . $_GET["idPag"] . '/presentacion/inicio.php', "\t<!-- Seccion" . $_GET["val"] . " --><div id='Seccion" . $_GET["val"] . "' class='selec'><div class='numeracion'>".$_GET["val"]."</div><?php include 'seccion" . $_GET["val"] . ".php' ?></div>");
+                Editar("<!-- Seccion" . $_GET["val"] . " -->", '../../' . $_GET["idPag"] . '/presentacion/inicio.php', "\t<!-- Seccion" . $_GET["val"] . " --><div id='Seccion" . $_GET["val"] . "' class='selec'><div class='numeracion'>" . $_GET["val"] . "</div><?php include 'seccion" . $_GET["val"] . ".php' ?></div>");
             }
             break;
         case 'Tipo': {
@@ -138,7 +144,7 @@ function eliminar($url, $sec, $tot)
     for ($i = $sec; $i < $tot; $i++) {
         if (file_exists($url . "/presentacion/seccion" . $i . ".php")) {
             rename($url . "/presentacion/seccion" . $i . ".php", $url . "/presentacion/seccion" . ($i - 1) . ".php");
-            Editar("<!-- Seccion" . $i . " -->", $url . "/presentacion/inicio.php", "\t<!-- Seccion" . ($i - 1) . " --><div id='Seccion" . ($i - 1) . "' class='selec'><div class='numeracion'>".($i - 1) ."</div><?php include 'seccion" . ($i - 1) . ".php' ?></div>");
+            Editar("<!-- Seccion" . $i . " -->", $url . "/presentacion/inicio.php", "\t<!-- Seccion" . ($i - 1) . " --><div id='Seccion" . ($i - 1) . "' class='selec'><div class='numeracion'>" . ($i - 1) . "</div><?php include 'seccion" . ($i - 1) . ".php' ?></div>");
             Editar2("Seccion" . $i . "", $url . "/menu.php", "Seccion" . ($i - 1));
             sleep(0.5);
         }

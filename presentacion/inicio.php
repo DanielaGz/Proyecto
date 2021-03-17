@@ -3,17 +3,19 @@
         <div class="col-lg-9">
             <div class="card m-1 shadow-lg " style="border-radius: 3vmax; align-items: center;">
                 <div class="embed-responsive embed-responsive-16by9 m-4" style="width: 90%;">
-                    <iframe class='embed-responsive-item' src='https://www.youtube.com/embed/pwc1AjaA5HE' allowfullscreen style='border-radius: 1vmax;'></iframe>;
+                    <iframe class='embed-responsive-item' src='https://www.youtube.com/embed/s-niJWSRYcs' allowfullscreen style='border-radius: 1vmax;'></iframe>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 iniciar">
+        <div class="col-lg-3 iniciar d-flex align-items-center">
             <div class="card m-1 shadow-lg " style="border-radius: 3vmax; align-items: center;">
                 <div class="card-body text-center">
+                    <img style=" max-height: 400px;" src="img/ojo.gif" class="img-fluid" alt="Responsive image">
+                    <hr />
                     <a class="btn text-white rounded-pill letra" href="index.php?pid=<?php
                                                                                         echo base64_encode("presentacion/crearPagina.php");
                                                                                         ?>" role="button" data-toggle="modal" data-target="#exampleModal">Comienza ya!</a>
-                    <hr />
+
                 </div>
 
             </div>

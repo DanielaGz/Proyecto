@@ -5,13 +5,15 @@ class UsuarioDAO{
     private $correo;
     private $clave;
     private $foto;
+    private $estado;
 
-    public function UsuarioDAO($id = "", $nombre = "", $correo = "", $clave = "", $foto = ""){
+    public function UsuarioDAO($id = "", $nombre = "", $correo = "", $clave = "", $foto = "",$estado =""){
         $this -> id = $id;
         $this -> nombre = $nombre;
         $this -> correo = $correo;
         $this -> clave = $clave;
         $this -> foto = $foto;
+        $this -> estado = $estado;
     }
 
     /* Registro */
@@ -24,19 +26,24 @@ class UsuarioDAO{
 
     public function insertar(){
         return "insert into usuario (nombre, correo, clave)
-                values ('" . $this -> nombre . "', '" . $this -> correo . "', '" . md5($this -> clave) . "')";
+                values ('" . $this -> nombre . "', '" . $this -> correo . "', '" . md5($this -> clave) . "',1)";
     }
 
     public function autenticar(){
-        return "select idUsuario
+        return "select idUsuario, estado
                 from Usuario 
                 where correo = '" . $this -> correo .  "' and clave = '" . md5($this -> clave) . "'";
     }
 
     public function consultar(){
-        return "select idUsuario,nombre, correo, foto
+        return "select idUsuario,nombre, correo, foto, estado
                 from usuario
                 where idUsuario = '" . $this -> id .  "'";
+    }
+
+    public function consultarUlt(){
+        return "select idUsuario,nombre, correo, foto, estado
+                from usuario order by idUsuario DESC limit 3";
     }
 
     public function Editar(){
@@ -56,6 +63,23 @@ class UsuarioDAO{
         return "update usuario
                 set clave='".md5($this -> clave)."'
                 where idUsuario = '" . $this -> id .  "'";
+    }
+
+    public function consultarTodos(){
+        return "select idUsuario,nombre, correo, foto, estado
+                from usuario";
+    }
+
+    public function Estado(){
+        return "update usuario
+                set estado='".$this -> estado."'
+                where idUsuario = '" . $this -> id .  "'";
+    }
+
+    public function consultarFiltro($filtro)
+    {
+        return "SELECT * FROM usuario 
+        where (nombre like '%" . $filtro . "%' or correo like '%" . $filtro . "%' or estado like '%" . $filtro . "%' or idUsuario like '%" . $filtro . "%') ";
     }
 
 }

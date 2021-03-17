@@ -9,6 +9,7 @@ class Usuario{
     private $foto;
     private $conexion;
     private $usuarioDAO;
+    private $estado;
  
     public function getId(){
         return $this -> id;
@@ -29,14 +30,20 @@ class Usuario{
     public function getFoto(){
         return $this -> foto;
     }
-    public function Usuario($id = "", $nombre = "", $correo = "", $clave = "", $foto = ""){
+
+    public function getEstado(){
+        return $this -> estado;
+    }
+
+    public function Usuario($id = "", $nombre = "", $correo = "", $clave = "", $foto = "", $estado =""){
         $this -> id = $id;
         $this -> nombre = $nombre;
         $this -> correo = $correo;
         $this -> clave = $clave;
         $this -> foto = $foto;
+        $this -> estado = $estado;
         $this -> conexion = new Conexion();
-        $this -> usuarioDAO = new UsuarioDAO($this -> id, $this -> nombre, $this -> correo, $this -> clave, $this -> foto);
+        $this -> usuarioDAO = new UsuarioDAO($this -> id, $this -> nombre, $this -> correo, $this -> clave, $this -> foto, $this -> estado);
     }
 
     /* Registro */
@@ -60,7 +67,8 @@ class Usuario{
         $this -> conexion -> cerrar();       
         if ($this -> conexion -> numFilas() == 1){            
             $resultado = $this -> conexion -> extraer();
-            $this -> id = $resultado[0];          
+            $this -> id = $resultado[0]; 
+            $this -> estado = $resultado[1];          
             return true;        
         }else {
             return false;
@@ -76,6 +84,7 @@ class Usuario{
         $this -> nombre = $resultado[1];
         $this -> correo = $resultado[2];
         $this -> foto = $resultado[3];
+        $this -> estado = $resultado[4];
     }
 
     public function Editar(){
@@ -103,6 +112,47 @@ class Usuario{
         $this -> conexion -> cerrar(); 
     }
     
+    public function consultarUlt(){
+        $this -> conexion -> abrir();
+        $this -> conexion -> ejecutar($this -> usuarioDAO -> consultarUlt());
+        $pag = array();
+        while(($resultado = $this -> conexion -> extraer()) != null){
+            $c = new Usuario($resultado[0], $resultado[1], $resultado[2],$resultado[3],$resultado[4]);
+            array_push($pag, $c);
+        }
+        $this -> conexion -> cerrar();
+        return $pag;
+    }
+
+    public function consultarTodos(){
+        $this -> conexion -> abrir();
+        $this -> conexion -> ejecutar($this -> usuarioDAO -> consultarTodos());
+        $pag = array();
+        while(($resultado = $this -> conexion -> extraer()) != null){
+            $c = new Usuario($resultado[0], $resultado[1], $resultado[2],$resultado[3],$resultado[4]);
+            array_push($pag, $c);
+        }
+        $this -> conexion -> cerrar();
+        return $pag;
+    }
+
+    public function Estado(){
+        $this -> conexion -> abrir();        
+        $this -> conexion -> ejecutar($this -> usuarioDAO -> Estado());        
+        $this -> conexion -> cerrar(); 
+    }
+
+    public function consultarFiltro($filtro){
+        $this -> conexion -> abrir();
+        $this -> conexion -> ejecutar($this -> usuarioDAO -> consultarFiltro($filtro));
+        $pag = array();
+        while(($resultado = $this -> conexion -> extraer()) != null){
+            $c = new Usuario($resultado[0], $resultado[1], $resultado[2],$resultado[3],$resultado[4]);
+            array_push($pag, $c);
+        }
+        $this -> conexion -> cerrar();
+        return $pag;
+    }
 
 }
 

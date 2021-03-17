@@ -10,6 +10,13 @@ $obj->consultarPag();
 $obj->editar("FechaEd", "NOW()");
 
 
+$fecha = new DateTime();
+$id=$fecha->getTimestamp();
+$log = new Log($id, 'Edición del proyecto '.$obj->getNombre());
+$log->insertar();
+$ulog = new UsuarioLog($_SESSION['id'], $id);
+$ulog->insertar();
+
 $var = count(glob($_SESSION["pag"] . '{*.php}', GLOB_BRACE));
 ?>
 <input id="anterior" type="hidden" value="">
@@ -65,7 +72,7 @@ $var = count(glob($_SESSION["pag"] . '{*.php}', GLOB_BRACE));
     <div class="card shadow-lg vista-pagina">
         <div class="card-body" style="margin-top: 5vh;">
             <div>
-                <h5 class="text-center letra">TU PAGINA "<?php echo strtoupper($obj->getNombre()); ?>" EN TIEMPO REAL </h5>
+                <h5 class="text-center letra">TU PAGINA "<?php echo strtoupper($obj->getNombre()); ?>" </h5>
             </div>
             <div id="vista" style="height: 108%;">
 
