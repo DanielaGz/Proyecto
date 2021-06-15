@@ -57,7 +57,7 @@ $l = $log->consultar();
 
 <script>
     function buscar() {
-        var url = "indexAjax.php?pid=<?php echo base64_encode("presentacion/administrador/logAjax.php") . "&sec=" . $_SESSION["id"] ?>" + "&filtro=" + $("#busqueda").val();
+        var url = "indexAjax.php?pid=<?php echo base64_encode("presentacion/administrador/logAjax.php") . "&sec=" . $_SESSION["id"] ?>" + "&filtro=" + $("#busqueda").val() +"&user=1";
         $("#logs").load(url);
     }
 </script>

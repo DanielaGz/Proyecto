@@ -47,7 +47,19 @@ class Log
         $this -> conexion -> ejecutar($this -> logDAO -> consultar());
         $pag = array();
         while(($resultado = $this -> conexion -> extraer()) != null){
-            $c = new Log($resultado[0], $resultado[1], $resultado[2],$resultado[3]);
+            $c = new Log($resultado[0], $resultado[1], $resultado[2],$resultado[5]);
+            array_push($pag, $c);
+        }
+        $this -> conexion -> cerrar();
+        return $pag;
+    }
+
+    public function consultarAdmin(){
+        $this -> conexion -> abrir();
+        $this -> conexion -> ejecutar($this -> logDAO -> consultarAdmin());
+        $pag = array();
+        while(($resultado = $this -> conexion -> extraer()) != null){
+            $c = new Log($resultado[0], $resultado[1], $resultado[2],$resultado[5]);
             array_push($pag, $c);
         }
         $this -> conexion -> cerrar();
@@ -59,13 +71,24 @@ class Log
         $this -> conexion -> ejecutar($this -> logDAO -> consultarFiltro($filtro));
         $pag = array();
         while(($resultado = $this -> conexion -> extraer()) != null){
-            $c = new Log($resultado[0], $resultado[1], $resultado[2],$resultado[3]);
+            $c = new Log($resultado[0], $resultado[1], $resultado[2],$resultado[5]);
             array_push($pag, $c);
         }
         $this -> conexion -> cerrar();
         return $pag;
     }
 
+    public function consultarFiltroAdmin($filtro){
+        $this -> conexion -> abrir();
+        $this -> conexion -> ejecutar($this -> logDAO -> consultarFiltroAdmin($filtro));
+        $pag = array();
+        while(($resultado = $this -> conexion -> extraer()) != null){
+            $c = new Log($resultado[0], $resultado[1], $resultado[2],$resultado[5]);
+            array_push($pag, $c);
+        }
+        $this -> conexion -> cerrar();
+        return $pag;
+    }
 }
 
 ?>

@@ -19,67 +19,67 @@ class UsuarioDAO{
     /* Registro */
 
     public function existeCorreo(){
-        echo "select correo
-                from usuario 
+        return "select correo
+                from Cliente 
                 where correo = '" . $this -> correo .  "'";
     }
 
     public function insertar(){
-        return "insert into usuario (nombre, correo, clave)
+        return "insert into Cliente (nombre, correo, clave, estado)
                 values ('" . $this -> nombre . "', '" . $this -> correo . "', '" . md5($this -> clave) . "',1)";
     }
 
     public function autenticar(){
-        return "select idUsuario, estado
-                from Usuario 
+        return "select idCliente, estado
+                from Cliente 
                 where correo = '" . $this -> correo .  "' and clave = '" . md5($this -> clave) . "'";
     }
 
     public function consultar(){
-        return "select idUsuario,nombre, correo, foto, estado
-                from usuario
-                where idUsuario = '" . $this -> id .  "'";
+        return "select idCliente,nombre, correo, foto, estado
+                from Cliente
+                where idCliente = '" . $this -> id .  "'";
     }
 
     public function consultarUlt(){
-        return "select idUsuario,nombre, correo, foto, estado
-                from usuario order by idUsuario DESC limit 3";
+        return "select idCliente,nombre, correo, foto, estado
+                from Cliente order by idCliente DESC limit 3";
     }
 
     public function Editar(){
-        return "update usuario
+        return "update Cliente
                 set nombre='".$this -> nombre."',
                 foto ='".$this ->foto."'
-                where idUsuario = '" . $this -> id .  "'";
+                where idCliente = '" . $this -> id .  "'";
     }
 
     public function VerificarPass(){
-        return "select idUsuario
-                from Usuario 
-                where idUsuario = '" . $this -> id .  "' and clave = '" . md5($this -> clave) . "'";
+        return "select idCliente
+                from Cliente 
+                where idCliente = '" . $this -> id .  "' and clave = '" . md5($this -> clave) . "'";
     }
 
     public function EditarPass(){
-        return "update usuario
+        return "update Cliente
                 set clave='".md5($this -> clave)."'
-                where idUsuario = '" . $this -> id .  "'";
+                where idCliente = '" . $this -> id .  "'";
     }
 
     public function consultarTodos(){
-        return "select idUsuario,nombre, correo, foto, estado
-                from usuario";
+        return "select idCliente,nombre, correo, foto, estado
+                from Cliente";
     }
 
     public function Estado(){
-        return "update usuario
+        return "update Cliente
                 set estado='".$this -> estado."'
-                where idUsuario = '" . $this -> id .  "'";
+                where idCliente = '" . $this -> id .  "'";
     }
 
     public function consultarFiltro($filtro)
     {
-        return "SELECT * FROM usuario 
-        where (nombre like '%" . $filtro . "%' or correo like '%" . $filtro . "%' or estado like '%" . $filtro . "%' or idUsuario like '%" . $filtro . "%') ";
+        return "SELECT * FROM Cliente 
+        where (nombre like '%" . $filtro . "%' or correo like '%" . $filtro . "%' or estado like '%" . $filtro . "%' or idCliente like '%" . $filtro . "%') ";
     }
 
 }

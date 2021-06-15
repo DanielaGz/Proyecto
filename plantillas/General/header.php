@@ -5,7 +5,7 @@
                                     echo base64_encode("presentacion/inicio.php");
                                     ?>">
                 <br>
-                <img src="img/logo.png" width="90vh"></a>
+                <img src="img/logo.png?nocache=145678" width="90vh"></a>
             <!-- Titulo --><h4><strong>Titulo</strong></h4>
            <br> 
         </div>

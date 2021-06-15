@@ -9,12 +9,12 @@
         </div>
         <div class="col-lg-3 iniciar d-flex align-items-center">
             <div class="card m-1 shadow-lg " style="border-radius: 3vmax; align-items: center;">
-                <div class="card-body text-center">
+                <div class="card-body text-center d-none d-sm-none d-md-block">
                     <img style=" max-height: 400px;" src="img/ojo.gif" class="img-fluid" alt="Responsive image">
                     <hr />
                     <a class="btn text-white rounded-pill letra" href="index.php?pid=<?php
                                                                                         echo base64_encode("presentacion/crearPagina.php");
-                                                                                        ?>" role="button" data-toggle="modal" data-target="#exampleModal">Comienza ya!</a>
+                                                                                        ?>" role="button" data-toggle="modal" data-target="#exampleModal">Inicia sesión</a>
 
                 </div>
 
@@ -26,7 +26,7 @@
                 <div class="card-header letra borde1" style="width: 100%; border-top-left-radius: 2vmax; border-top-right-radius: 2vmax;">
                     Inicia sesión
                 </div>
-                <div class="card-body text-center">
+                <div class="card-body text-center" id="m">
                     <?php include "iniciar.php" ?>
                 </div>
             </div>

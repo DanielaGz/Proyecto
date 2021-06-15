@@ -25,6 +25,13 @@ $paginas = $pagina->consultarMod();
 
             <div id="paginasU">
                 <?php
+                if (count($paginas) == 0) {
+                ?>
+                    <center>
+                        <h6>AUN NO TIENES PROYECTOS</h6>
+                    </center>
+                <?php
+                }
                 foreach ($paginas as $pag) {
                 ?>
                     <div class="card rounded-pill borber border-secondary mb-3">
@@ -131,6 +138,14 @@ $paginas = $pagina->consultarMod();
             cache: false,
             success: function(response) {
                 alert("Su pagina se ha creado correctamente");
+                <?php
+                $fecha = new DateTime();
+                $id = $fecha->getTimestamp();
+                $log = new Log($id, 'Creó un nuevo proyecto');
+                $log->insertar();
+                $ulog = new UsuarioLog($_SESSION["id"], $id);
+                $ulog->insertar();
+                ?>
                 Editar(response);
             }
         })
@@ -138,6 +153,14 @@ $paginas = $pagina->consultarMod();
 
     function Eliminar(id) {
         $("#iconoCarga").css("display", "block");
+        <?php
+        $fecha = new DateTime();
+        $id = $fecha->getTimestamp();
+        $log = new Log($id, 'Eliminó un proyecto');
+        $log->insertar();
+        $ulog = new UsuarioLog($_SESSION["id"], $id);
+        $ulog->insertar();
+        ?>
         $.ajax({
             url: "crear.php?v=-1&idP=" + id + "&idU=" + <?php echo $_SESSION["id"] ?>,
             type: "GET",

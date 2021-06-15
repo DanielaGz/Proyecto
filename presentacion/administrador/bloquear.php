@@ -1,14 +1,23 @@
-<?php 
+<?php
 
 $user = new Usuario($_GET['id']);
-$user ->consultar();
+$user->consultar();
 
-$alerta = ($user ->getEstado()==1)?'Usuario bloqueado correctamente':'Usuario desbloqueado correctamente';
+$alerta = ($user->getEstado() == 1) ? 'Usuario bloqueado correctamente' : 'Usuario desbloqueado correctamente';
 
-$estado = ($user ->getEstado()==1)?'2':'1';
+$estado = ($user->getEstado() == 1) ? '2' : '1';
 
-$usser = new Usuario($_GET['id'],'','','','',$estado);
-$usser -> Estado();
+$texto = ($user->getEstado() == 1) ? 'Bloqueo' : 'Desbloqueo';
+
+$usser = new Usuario($_GET['id'], '', '', '', '', $estado);
+$usser->Estado();
+
+$fecha = new DateTime();
+$id = $fecha->getTimestamp();
+$log = new Log($id, $texto.' el usuario cliente '.$user ->getNombre().' con id '.$user -> getId());
+$log->insertar();
+$ulog = new AdminLog($_GET["idu"], $id);
+$ulog->insertar();
 
 ?>
 

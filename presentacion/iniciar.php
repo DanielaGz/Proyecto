@@ -20,4 +20,4 @@
     }
     ?>
 </form>
-<p class="letra">¿Eres nuevo? <button class="b2" onclick="Registrar(0)">Registrate</button></p>
+<p class="letra">¿Eres nuevo? <button class="b2" onclick="Registrar(0)">Regístrate</button></p>

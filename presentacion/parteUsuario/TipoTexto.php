@@ -12,9 +12,9 @@
           <p class="letra">Titulo: </p>
           <p class="letra">Contenido: </p>
         </div>
-        <div>
+        <div class="col-6">
           <input id="Titulo" type="text" class="form-control i" onchange="EditarTex(this.value,this.id)">
-          <input id="Contenido" type="text" class="form-control i" onchange="EditarTex(this.value,this.id)">
+          <textarea class="form-control"id="Contenido" rows="3" onchange="EditarTex(this.value,this.id)"></textarea>
         </div>
       </div>
     </div>

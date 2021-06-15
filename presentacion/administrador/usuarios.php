@@ -87,7 +87,7 @@ $users = $user->consultarTodos();
     }
 
     function Bloquear(v) {
-        var url = "indexAjax.php?pid=<?php echo base64_encode("presentacion/administrador/bloquear.php") ?>" + "&id=" + v;
+        var url = "indexAjax.php?pid=<?php echo base64_encode("presentacion/administrador/bloquear.php").'&idu='.$_SESSION['id'] ?>" + "&id=" + v;
         $("#alerta").load(url);
     }
 </script>

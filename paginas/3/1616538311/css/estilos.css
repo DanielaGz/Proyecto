@@ -1,0 +1,73 @@
+:root{
+  /* base */--b: black;
+  /* head */--e: black;
+    /* fondo */--f: white;
+  /* menu */--m: black;
+  /* letra */--l: #ffffff;
+    }
+    
+    body{
+      background: var(--f);
+    }
+    .encabezado{
+      background: var(--b);
+      color: var(--l);
+    }
+    .navbar{
+      background: var(--m);
+    }
+    .navbar-dark .navbar-nav .nav-link {
+      color: var(--l);
+    }
+    .navbar-dark .navbar-brand {
+      color: var(--l);
+    }
+    .vista-pagina{
+        border-radius: 6px;
+    }
+    .caja{
+      text-align: center;
+    }
+    .c{
+      color: var(--l);
+    }
+    .btn,.a{
+      background: var(--e);
+    }
+    .selec{
+      position:relative;
+    }
+    .seleccionado {
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.281);
+      top: 0;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+      border: rgb(20, 12, 12) 5px dashed;
+    }
+  
+    .numeracion {
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.609);
+      top: 0;
+      left: 95.7%;
+      right: 0;
+      margin: 0 auto;
+      width: 80px;
+      height: 50px;
+      text-align: center;
+      font-size: 40px;
+      z-index: 3;
+    }
+  
+  .card-img-overlay{
+    background-color: rgba(0, 0, 0, 0.205);
+  }
+  
+  .b{
+    border-color: rgba(255, 255, 255, 0);
+  }

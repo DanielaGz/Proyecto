@@ -20,11 +20,11 @@
           <p class="letra">Color de letra: </p>
         </div>
         <div class="col-7">
-          <input id="base" type="color" class="form-control i" oninput="myFunction(this.value,this.id)">
-          <input id="head" type="color" class="form-control i" oninput="myFunction(this.value,this.id)">
-          <input id="menu" type="color" class="form-control i" oninput="myFunction(this.value,this.id)">
-          <input id="fondo" type="color" class="form-control i" oninput="myFunction(this.value,this.id)">
-          <input id="letra" type="color" class="form-control i" oninput="myFunction(this.value,this.id)">
+          <input id="base" type="color" class="form-control i letra" oninput="myFunction(this.value,this.id)">
+          <input id="head" type="color" class="form-control i letra" oninput="myFunction(this.value,this.id)">
+          <input id="menu" type="color" class="form-control i letra" oninput="myFunction(this.value,this.id)">
+          <input id="fondo" type="color" class="form-control i letra" oninput="myFunction(this.value,this.id)">
+          <input id="letra" type="color" class="form-control i letra" oninput="myFunction(this.value,this.id)">
         </div>
       </div>
     </div>

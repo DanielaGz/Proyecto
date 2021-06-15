@@ -14,13 +14,13 @@ class UsuarioLogDAO
     /* Insertar */
 
     public function insertar(){
-        return "Insert into usuariolog (idUsuario,idLog) 
+        return "Insert into logcliente (idCliente,idLog) 
                 values (". $this -> idU .",". $this -> udA .")";      
     }
 
     public function consultar(){
         return "select *
                 from log
-                where idUsuario = '" . $this -> idUsuario .  "'";
+                where idCliente = '" . $this -> idU .  "'";
     }
 }

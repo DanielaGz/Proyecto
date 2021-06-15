@@ -5,6 +5,7 @@ require "logica/Pagina.php";
 require "logica/Administrador.php";
 require "logica/log.php";
 require "logica/usuarioLog.php";
+require "logica/AdminLog.php";
 $pid = "";
 if (isset($_GET["pid"])) {
 	$pid = base64_decode($_GET["pid"]);
