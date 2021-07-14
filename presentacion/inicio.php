@@ -20,17 +20,6 @@
 
             </div>
         </div>
-        <div class="col-lg-3 iniciarcell">
-            <br>
-            <div class="card m-1 shadow-lg " style="border-radius: 3vmax; align-items: center;">
-                <div class="card-header letra borde1" style="width: 100%; border-top-left-radius: 2vmax; border-top-right-radius: 2vmax;">
-                    Inicia sesión
-                </div>
-                <div class="card-body text-center" id="m">
-                    <?php include "iniciar.php" ?>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 

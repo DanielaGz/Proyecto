@@ -14,13 +14,13 @@ class AdminLogDAO
     /* Insertar */
 
     public function insertar(){
-        return "Insert into logadministrador (idAdministrador,idLog) 
+        return "Insert into logadministrador (idadministrador,idlog) 
                 values (". $this -> idU .",". $this -> udA .")";      
     }
 
     public function consultar(){
         return "select *
                 from log
-                where idAdministrador = '" . $this -> idU .  "'";
+                where idadministrador = '" . $this -> idU .  "'";
     }
 }

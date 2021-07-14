@@ -59,6 +59,7 @@ if (isset($_GET["cerrarSesion"]) || !isset($_SESSION["id"])) {
 		include $pid;
 	}
 	?>
+	<div class="text-center text-muted mt-5">Daniela Guzmán &copy; <?php echo date("Y")?> <br> danalguzmanm@correo.udistrital.edu.co</div>
 </body>
 
 </html>

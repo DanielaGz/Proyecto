@@ -19,66 +19,67 @@ class PaginaDAO{
     /* Insertar */
 
     public function insertar(){
-        return "Insert into pagina (Nombre,Ruta,idCliente,Fecha,FechaEd) 
+        return "Insert into pagina (nombre,ruta,idcliente,fecha,fechaed) 
                 values ('". $this -> nombre ."','". $this -> ruta ."','". $this -> idCliente ."',NOW(),NOW())";      
     }
 
     /* Eliminar */
 
     public function eliminar(){
-        return "Delete from pagina where Ruta= '".$this -> ruta."'";      
+        return "delete from pagina where ruta= '".$this -> ruta."'";      
     }
     
     public function consultar(){
-        return "select idPagina, Nombre, Ruta, Fecha, idCliente
-                from Pagina
-                where idCliente = '" . $this -> idCliente .  "'";
+        return "select idpagina, nombre, ruta, fecha, idcliente
+                from pagina
+                where idcliente = '" . $this -> idCliente .  "'";
     }
 
     public function consultarMod(){
-        return "select idPagina, Nombre, Ruta, Fecha, idCliente
-                from Pagina
-                where idCliente = '" . $this -> idCliente .  "'
-                order by FechaEd desc";
+        return "select idpagina, nombre, ruta, fecha, idcliente
+                from pagina
+                where idcliente = '" . $this -> idCliente .  "'
+                order by fechaed desc";
     }
 
     public function consultarMod2(){
-        return "select idPagina, Nombre, Ruta, Fecha, idCliente
-                from Pagina
-                where idCliente = '" . $this -> idCliente .  "'
-                order by FechaEd asc limit 3";
+        return "select idpagina, nombre, ruta, fecha, idcliente
+                from pagina
+                where idcliente = '" . $this -> idCliente .  "'
+                order by fechaed asc limit 3";
     }
 
     public function consultarCre(){
-        return "select idPagina, Nombre, Ruta, Fecha, idCliente
-                from Pagina
-                where idCliente = '" . $this -> idCliente .  "'
-                order by Fecha asc";
+        return "select idpagina, nombre, ruta, fecha, idcliente
+                from pagina
+                where idcliente = '" . $this -> idCliente .  "'
+                order by fecha asc";
     }
 
     public function consultarN(){
-        return "select idPagina, Nombre, Ruta, Fecha, idCliente
-                from Pagina
-                where idCliente = '" . $this -> idCliente .  "'
-                order by Nombre";
+        return "select idpagina, nombre, ruta, fecha, idcliente
+                from pagina
+                where idcliente = '" . $this -> idCliente .  "'
+                order by nombre";
     }
 
     public function consultarPag(){
-        return "select idPagina, Nombre, Ruta, idCliente, Fecha
+        return "select idpagina, nombre, ruta, idcliente, fecha
                 from pagina
-                where Ruta = '" . $this -> ruta .  "'";
+                where ruta = '" . $this -> ruta .  "'";
     }
 
     public function editar($param,$valor){
         return "update pagina set ".$param." = ".$valor."
-                where idPagina = '" . $this -> id .  "'";  
+                where idpagina = '" . $this -> id .  "'";  
     }
 
     public function consultarFiltro($filtro)
     {
-        return "select idPagina, Nombre, Ruta, Fecha, idCliente
+        return "select idpagina, nombre, ruta, fecha, idcliente
         FROM pagina
-        where (idPagina like '%" . $filtro . "%' or Nombre like '" . $filtro . "%' or Fecha like '" . $filtro . "%') ";
+        where idcliente = '".$this -> idCliente."'
+        and (idpagina like '%" . $filtro . "%' or nombre like '" . $filtro . "%' or fecha like '" . $filtro . "%') ";
     }
 
 }

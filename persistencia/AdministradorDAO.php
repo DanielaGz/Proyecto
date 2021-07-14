@@ -25,56 +25,56 @@ class AdministradorDAO{
     }
 
     public function insertar(){
-        return "insert into Administrador (nombre, correo, clave,estado)
+        return "insert into administrador (nombre, correo, clave,estado)
                 values ('" . $this -> nombre . "', '" . $this -> correo . "', '" . md5($this -> clave) . "',1)";
     }
 
     public function autenticar(){
-        return "select idAdministrador, estado
+        return "select idadministrador, estado
                 from administrador 
                 where correo = '" . $this -> correo .  "' and clave = '" . md5($this -> clave) . "'";
     }
 
     public function consultar(){
-        return "select idAdministrador,nombre, correo, foto, estado
+        return "select idadministrador,nombre, correo, foto, estado
                 from administrador
-                where idAdministrador = '" . $this -> id .  "'";
+                where idadministrador = '" . $this -> id .  "'";
     }
 
     public function Editar(){
         return "update administrador
                 set nombre='".$this -> nombre."',
                 foto ='".$this ->foto."'
-                where idAdministrador = '" . $this -> id .  "'";
+                where idadministrador = '" . $this -> id .  "'";
     }
 
     public function VerificarPass(){
-        return "select idAdministrador
+        return "select idadministrador
                 from administrador 
-                where idAdministrador = '" . $this -> id .  "' and clave = '" . md5($this -> clave) . "'";
+                where idadministrador = '" . $this -> id .  "' and clave = '" . md5($this -> clave) . "'";
     }
 
     public function EditarPass(){
         return "update administrador
                 set clave='".md5($this -> clave)."'
-                where idAdministrador = '" . $this -> id .  "'";
+                where idadministrador = '" . $this -> id .  "'";
     }
 
     public function consultarTodos(){
-        return "select idAdministrador,nombre, correo, foto, estado
-                from Administrador";
+        return "select idadministrador,nombre, correo, foto, estado
+                from administrador";
     }
 
     public function consultarFiltro($filtro)
     {
-        return "SELECT * FROM Administrador 
-        where (nombre like '%" . $filtro . "%' or correo like '%" . $filtro . "%' or estado like '%" . $filtro . "%' or idAdministrador like '%" . $filtro . "%') ";
+        return "SELECT * FROM administrador 
+        where (nombre like '%" . $filtro . "%' or correo like '%" . $filtro . "%' or estado like '%" . $filtro . "%' or idadministrador like '%" . $filtro . "%') ";
     }
 
     public function Estado(){
-        return "update Administrador
+        return "update administrador
                 set estado='".$this -> estado."'
-                where idAdministrador = '" . $this -> id .  "'";
+                where idadministrador = '" . $this -> id .  "'";
     }
 
 }

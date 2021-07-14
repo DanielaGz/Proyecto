@@ -15,7 +15,7 @@ switch ($_GET["c"]) {
         break;
     case "4": {
             $paginas = $pagina->consultarFiltro($_GET["filtro"]);
-        }
+        } 
         break;
 }
 
